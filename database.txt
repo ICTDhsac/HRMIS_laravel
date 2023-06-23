@@ -1,0 +1,63 @@
+SELECT TOP (1000) [Id]
+      ,[DateCreated]
+      ,[IsDeleted]
+      ,[RecordDate]
+      ,[TimeLogStamp]
+      ,[LogType]
+      ,[AccessNumber]
+      ,[DeviceSerialNumber]
+      ,[VerifyMode]
+      ,[CheckSum]
+      ,[Location]
+  FROM [SentryLocal].[dbo].[TimeLogs]
+
+
+SELECT TOP (1000) [Id]
+      ,[DateCreated]
+      ,[IsDeleted]
+      ,[PersonnelNo]
+      ,[AccessNumber]
+      ,[LastName]
+      ,[FirstName]
+      ,[MiddleName]
+      ,[ContactNumber]
+      ,[Email]
+      ,[Password]
+      ,[Birthdate]
+      ,[PhotoId]
+      ,[UserRoleId]
+      ,[SmsContactNumber]
+      ,[SmsNotification]
+  FROM [SentryLocal].[dbo].[Personnels]
+
+
+Id	uniqueidentifier	Unchecked
+DateCreated	datetimeoffset(7)	Unchecked
+IsDeleted	bit	Unchecked
+PersonnelNo	varchar(50)	Unchecked
+AccessNumber	varchar(32)	Checked
+LastName	varchar(50)	Unchecked
+FirstName	varchar(100)	Unchecked
+MiddleName	varchar(50)	Checked
+ContactNumber	varchar(100)	Checked
+Email	varchar(100)	Checked
+Password	varchar(50)	Checked
+Birthdate	datetime	Checked
+PhotoId	uniqueidentifier	Checked
+UserRoleId	uniqueidentifier	Checked
+SmsContactNumber	varchar(100)	Checked
+SmsNotification	bit	Checked
+		
+
+
+Id	uniqueidentifier	Unchecked
+DateCreated	datetimeoffset(7)	Unchecked
+IsDeleted	bit	Unchecked
+RecordDate	datetime	Unchecked
+TimeLogStamp	datetimeoffset(7)	Unchecked
+LogType	varchar(20)	Unchecked
+AccessNumber	varchar(32)	Checked
+DeviceSerialNumber	varchar(50)	Checked
+VerifyMode	varchar(8)	Unchecked
+CheckSum	varchar(16)	Checked
+Location	varchar(100)	Checked
