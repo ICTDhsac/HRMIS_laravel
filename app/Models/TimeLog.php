@@ -9,7 +9,12 @@ class TimeLog extends Model
 {
     use HasFactory;
 
-    protected $connection = "sqlsrv";
+    // protected $connection = "sqlsrv";
 
     protected $table = "TimeLogs";
+
+    public function personnel(){
+        return $this->belongsTo(Personnel::class, 'AccessNumber', 'AccessNumber');
+    }
+
 }

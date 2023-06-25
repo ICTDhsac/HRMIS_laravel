@@ -7,7 +7,7 @@ use App\Models\Employee;
 use App\Models\Personnel;
 use App\Models\TimeLog;
 use Illuminate\Support\Facades\DB;
-use Carbon\Carbon;
+
 
 use Illuminate\Http\Request;
 
@@ -18,29 +18,19 @@ class HomeController extends Controller
     public function index(){
 
         // $personnels = Personnel::orderBy(DB::raw('cast(AccessNumber as int)'))->get();
-        $personnels = Personnel::orderBy(DB::raw('cast(AccessNumber as int)'))->where('isDeleted', '=', 0)->get();
+        $personnels = Personnel::orderBy(DB::raw('cast(AccessNumber as int)'))->where('isDeleted', 0)->get();
         
         return view('personnels.index', ['personnels' => $personnels]);
         
     }
 
     public function show($id){
-
-        $personnel_info = Personnel::where('Id', $id)->first();
-        $data = array(
-            'personnel_info' => Personnel::where('Id', $id)->first(),
-            'personnel_timelogs' => TimeLog::where('AccessNumber', $personnel_info->AccessNumber)
-                ->orderBy('RecordDate')
-                ->get()
-                ->map(function($timelog) {
-                    $timelog->RecordDate = Carbon::parse($timelog->RecordDate)->format('m/d/Y');
-                    $timelog->TimeLogStamp = Carbon::parse($timelog->TimeLogStamp)->format('H:i:s');
-                    return $timelog;
-                })
-        );
+        $personnel_info = Personnel::find($id);
+        $personnel_timelogs = $personnel_info->getFormattedTimelogs();
         
-        return view('personnels.show', $data);
+        return view('personnels.show', compact('personnel_info', 'personnel_timelogs'));
     }
+
 
     public function addArticle(){
         
@@ -55,17 +45,17 @@ class HomeController extends Controller
 
     }
 
-    public function addEmployee(){
+    // public function addEmployee(){
         
-        Employee::create([
+    //     Employee::create([
 
-            'first_name' => 'Mark Oliver',
-            'last_name' => 'Roman',
-            'email' => 'oliver@email.com',
-            'address' => 'Camarin Caloocan City',
-        ]);
+    //         'first_name' => 'Mark Oliver',
+    //         'last_name' => 'Roman',
+    //         'email' => 'oliver@email.com',
+    //         'address' => 'Camarin Caloocan City',
+    //     ]);
 
-        return "The Employee has been added!";
+    //     return "The Employee has been added!";
 
-    }
+    // }
 }

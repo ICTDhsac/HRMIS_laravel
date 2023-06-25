@@ -41,8 +41,8 @@
 
 {{-- @php
     $filteredLogs = $personnel_timelogs->where('RecordDate', '06/23/2023')
-                                      ->where('LogType', 'IN')
-                                      ->first();
+                                ->where('LogType', 'IN')
+                                    ->first();
 @endphp
 
 @if ($filteredLogs)
@@ -52,8 +52,8 @@
 
 {{-- @php
     $filteredLogs = $personnel_timelogs->where('RecordDate', '06/23/2023')
-                                      ->where('LogType', 'OUT')
-                                      ->last();
+                                ->where('LogType', 'OUT')
+                                ->last();
 @endphp
 
 @if ($filteredLogs)

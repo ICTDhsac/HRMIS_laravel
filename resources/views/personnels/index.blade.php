@@ -17,7 +17,7 @@
                     <th>First Name</th>
                     <th>Middle Name</th>
                     <th>Last Name</th>
-                    <th>Actions</th>
+                    <th>Time Logs</th>
                 </thead>
                 <tbody>
 @foreach ($personnels as $personnel)
@@ -27,9 +27,9 @@
                         <td>{{ $personnel->MiddleName }}</td>
                         <td>{{ $personnel->LastName }}</td>
                         <td>
-                            <a class="btn btn-primary" href="/personnel/{{$personnel->Id}}">Show</a>
-                            <a class="btn btn-info" href="">Edit</a>
-                            <a class="btn btn-danger" href="">Delete</a>
+                            <a class="btn btn-primary" href="/personnel/{{$personnel->Id}}">View Time Logs</a>
+                            {{-- <a class="btn btn-info" href="">Edit</a>
+                            <a class="btn btn-danger" href="">Delete</a> --}}
                         </td>
                     </tr>
 @endforeach
