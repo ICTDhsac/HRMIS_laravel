@@ -9,7 +9,7 @@ class TimeLog extends Model
 {
     use HasFactory;
 
-    // protected $connection = "sqlsrv";
+    protected $connection = "sqlsrv";
 
     protected $table = "TimeLogs";
 

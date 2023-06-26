@@ -20,10 +20,10 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/',[HomeController::class, 'index']);
 Route::get('/personnel/{id}', [HomeController::class, 'show']);
+Route::post('/personnel/{id}', [HomeController::class, 'time_logs'])->name('personnel.time_logs');
 
+//sample 
 Route::get('/add-article',[HomeController::class, 'addArticle']);
-Route::get('/add-employee',[HomeController::class, 'addEmployee']);
-
 // Route::get('/add-employee',[HomeController::class, 'addEmployee'], function () {
 //     return view('article');
 // });
