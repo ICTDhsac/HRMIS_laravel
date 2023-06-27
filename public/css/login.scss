@@ -6,7 +6,9 @@ body {
     font-weight: 400;
     overflow-x: hidden;
     overflow-y: auto;
-    background-image: url("{{ asset('img/login_bg.jpg') }}");
+    background-image: url('../img/login_bg.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 form#login {
