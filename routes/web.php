@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\SessionsController;
+use App\Http\Controllers\UsersController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -18,12 +20,13 @@ use Illuminate\Support\Facades\Route;
 //     return view('index');
 // });
 
-Route::get('/',[HomeController::class, 'index']);
-Route::get('/personnel/{id}', [HomeController::class, 'show']);
-Route::post('/personnel/{id}', [HomeController::class, 'time_logs'])->name('personnel.time_logs');
+Route::get('/users',[UsersController::class, 'index']);
+Route::get('/login',[SessionsController::class, 'index']);
 
-//sample 
-Route::get('/add-article',[HomeController::class, 'addArticle']);
+Route::get('/',[HomeController::class, 'index']);
+Route::get('/personnel/{id}', [HomeController::class, 'show'])->name('personnel.show');
+Route::match(['get', 'post'], '/get_timelogs/{id}', [HomeController::class, 'time_logs'])->name('personnel.time_logs');
+
 // Route::get('/add-employee',[HomeController::class, 'addEmployee'], function () {
 //     return view('article');
 // });

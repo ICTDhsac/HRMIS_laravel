@@ -16,32 +16,20 @@
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
     {{-- Font Awesome --}}
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    {{-- Public assets --}}
+    <script type="text/javascript" src="{{ asset('js/timeLogs.js') }}"></script>
     <script type="text/javascript">
-        $(function() {
-        
-            var start = moment().subtract(0, 'days');
-            var end = moment();
-        
-            function cb(start, end) {
-                $('#reportrange span').html(start.format('MMMM D, YYYY') + ' - ' + end.format('MMMM D, YYYY'));
-                $('#start_date').val(start.format('MM-DD-YYYY'));
-                $('#end_date').val(end.format('MM-DD-YYYY'));
-            }
-        
-            $('#reportrange').daterangepicker({
-                startDate: start,
-                endDate: end,
-                ranges: {
-                    'Today': [moment(), moment()],
-                    'Yesterday': [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
-                    'Last 7 Days': [moment().subtract(6, 'days'), moment()],
-                    'Last 30 Days': [moment().subtract(29, 'days'), moment()],
-                    'This Month': [moment().startOf('month'), moment().endOf('month')],
-                    'Last Month': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
+        $(document).ready(function () {
+            $.ajax({
+                url: "{{ route('personnel.time_logs', ['id' => $personnel_info->Id]) }}",
+                type: "GET",
+                success: function (response) {
+                    $('#result').html(response);
+                },
+                error: function (xhr) {
+                    // Handle any errors
                 }
-            }, cb);
-        
-            cb(start, end);
+            });
         });
     </script>
 </head>
@@ -64,29 +52,9 @@
                     <input type="hidden" name="start_date" id="start_date">
                     <input type="hidden" name="end_date" id="end_date">
                     @csrf
-                    <input class="btn btn-primary mx-2" type="submit" value="Submit">
                 </form>
             </div>
-            <table class="table table-striped table-hover table-bordered table-dark">
-                <thead>
-                    <th>Record Date</th>
-                    <th>TIME IN</th>
-                    <th>BREAK OUT</th>
-                    <th>BREAK IN</th>
-                    <th>TIME OUT</th>
-                    <th>TOTAL WORK HOURS</th>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>{{ $time_in ? $time_in->RecordDate : 'No Data' }}</td>
-                        <td>{{ $time_in ? $time_in->TimeLogStamp : 'No Data' }}</td>
-                        <td>{{ $break_out ? $break_out->TimeLogStamp : 'No Data' }}</td>
-                        <td>{{ $break_in ? $break_in->TimeLogStamp : 'No Data' }}</td>
-                        <td>{{ $time_out ? $time_out->TimeLogStamp : 'No Data' }}</td>
-                        <td>{{ $total_hrs }} <i>h:m:s</i></td>
-                    </tr>
-                </tbody>
-            </table>
+            <div id="result"></div>
         </div>
     </body>
 </html>
