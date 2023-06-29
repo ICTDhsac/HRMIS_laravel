@@ -1,0 +1,23 @@
+* {
+    /* outline: 1px dotted red; */
+}
+
+
+a {
+    text-decoration: none;
+}
+
+#logo {
+    height: 56px;
+    background-color: #6C757D;
+    vertical-align: middle;
+    /* border: 1px solid black; */
+}
+
+#logo a {
+    color: white;
+}
+
+.navbar-active {
+    width: 250px;
+}

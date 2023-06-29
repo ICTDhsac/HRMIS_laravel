@@ -16,9 +16,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// Route::get('/', function () {
-//     return view('index');
-// });
+Route::get('/dashboard', function () {
+    return view('template.nav');
+});
 
 Route::get('/users',[UsersController::class, 'index']);
 Route::get('/login',[SessionsController::class, 'index']);
@@ -26,7 +26,3 @@ Route::get('/login',[SessionsController::class, 'index']);
 Route::get('/',[HomeController::class, 'index']);
 Route::get('/personnel/{id}', [HomeController::class, 'show'])->name('personnel.show');
 Route::match(['get', 'post'], '/get_timelogs/{id}', [HomeController::class, 'time_logs'])->name('personnel.time_logs');
-
-// Route::get('/add-employee',[HomeController::class, 'addEmployee'], function () {
-//     return view('article');
-// });

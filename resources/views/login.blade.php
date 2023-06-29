@@ -15,12 +15,13 @@
 </head>
 <body>
     <div class="container d-flex align-items-center justify-content-center vh-100">
-        <form id="login" class="border p-4" action="">
+        <form id="login" class="border p-4" action="/dashboard" method="get">
             <div class="d-flex justify-content-center p-2">
                 <img id="logo" src="{{asset('img/' . env('LOGO')) }}" alt="HSAC LOGO">
             </div>
-            <h5 class="text-center border-bottom">{{ env('APP_NAME') }} <br/><small>{!! env('APP_OWNER') !!}</small></h5>
-            <h4 class="text-center pt-5 pb-2">User Login</h4>
+            <h5 class="text-center">{{ env('APP_NAME') }} </h5>
+            <p class="text-center border-bottom">{!! env('APP_OWNER') !!}</p>
+            <h4 class="text-center pb-2">User Login</h4>
             <div class="form-group d-flex justify-content-start align-items-center p-2" style="border: 1px solid #D2D6DE;">
                 <input type="text" required id="username" name="username" placeholder="Username" maxlength="25" value="">
                 <span class="fa fa-user form-control-feedback"></span>

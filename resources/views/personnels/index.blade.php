@@ -11,7 +11,7 @@
     <body>
         <div class="container mt-3">
             <h1>HSAC Personnels</h1>
-            <table class="table table-striped table-hover table-bordered table-dark">
+            <table class="table table-striped table-hover table-bordered">
                 <thead>
                     <th>Access Number</th>
                     <th>First Name</th>
