@@ -43,7 +43,7 @@
                     $timeDiffwithBreak = $timeDiff;
                 }
             @endphp
-                        <td class="{{$status}}">Work Hours: {{ $timeDiff }} - Break: {{ $breakTimeDiff}} <br> Total: {{$timeDiffwithBreak}}</td>
+                        <td class="{{$status}}">(Work Hours: {{ $timeDiff }} - Break: {{ $breakTimeDiff}})<br> Total: {{$timeDiffwithBreak}}</td>
         @else
                         <td><i class='text-warning'>NO DATA</i></td>
         @endif

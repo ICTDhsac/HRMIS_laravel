@@ -2,7 +2,7 @@
 
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\SessionsController;
-use App\Http\Controllers\UsersController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -20,7 +20,10 @@ Route::get('/dashboard', function () {
     return view('template.nav');
 });
 
-Route::get('/users',[UsersController::class, 'index']);
+Route::get('/users',[UserController::class, 'index']);
+Route::get('/register',[UserController::class, 'register']);
+Route::get('/store', [UserController::class, 'store']);
+
 Route::get('/login',[SessionsController::class, 'index']);
 
 Route::get('/',[HomeController::class, 'index']);

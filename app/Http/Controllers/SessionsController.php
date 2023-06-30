@@ -7,6 +7,6 @@ use Illuminate\Http\Request;
 class SessionsController extends Controller
 {
     public function index(){
-        return view('login');
+        return view('users.login');
     }
 }
